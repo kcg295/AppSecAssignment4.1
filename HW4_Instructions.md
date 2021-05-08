@@ -135,7 +135,7 @@ you are likely overthinking the problem.
 
 ## Part 4: Oops, was that card yours?
 
-There exists a vulnerability in the REST API that allows users to GiftCards that
+There exists a vulnerability in the REST API that allows users to use GiftCards that
 do not belong to them. In a file called BUG.txt, explain why this vulnerability
 may be occurring, and how it can be fixed. Your explanation should be no larger
 than a paragraph.
