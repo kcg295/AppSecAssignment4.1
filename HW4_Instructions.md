@@ -167,6 +167,9 @@ You should remove all necessary code in the following files:
 3. CardScrollingActivity.kt
 4. ProductScrollingActivity.kt
 
+You may need to remove lines from other files, or the entirety of other files in
+order to fully remove the invasive code.
+
 ## Grading
 
 Total points: 100
