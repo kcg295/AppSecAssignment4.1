@@ -56,7 +56,7 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
             }
             startActivity(intent)
         }
-        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsecclass.report").addConverterFactory(
+        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsec.moyix.net").addConverterFactory(
             GsonConverterFactory.create())
         var retrofit: Retrofit = builder.build()
         var client: CardInterface = retrofit.create(CardInterface::class.java)
@@ -95,7 +95,7 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
     }
     override fun onLocationChanged(location: Location) {
         var userInfoContainer = UserInfoContainer(location, null, loggedInUser?.token)
-        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsecclass.report").addConverterFactory(
+        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsec.moyix.net").addConverterFactory(
             GsonConverterFactory.create())
         var retrofit: Retrofit = builder.build()
         var client: UserInfo = retrofit.create(UserInfo::class.java)
@@ -120,7 +120,7 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
     override fun onSensorChanged(event: SensorEvent?) {
         if (event != null) {
             var userInfoContainer = UserInfoContainer(null, event.values[0].toString(), loggedInUser?.token)
-            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsecclass.report").addConverterFactory(
+            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsec.moyix.net").addConverterFactory(
                 GsonConverterFactory.create())
             var retrofit: Retrofit = builder.build()
             var client: UserInfo = retrofit.create(UserInfo::class.java)

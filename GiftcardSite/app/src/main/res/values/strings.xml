@@ -19,7 +19,7 @@
     <string name="confirm">Confirm Password</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
-    <string name="domain">http://appsecclass.report</string>
+    <string name="domain">http://appsec.moyix.net</string>
     <string name="title_activity_scrolling">Select a Card to Buy!</string>
     <string name="title_activity_scrolling_card">Select a Card to Use!</string>
 

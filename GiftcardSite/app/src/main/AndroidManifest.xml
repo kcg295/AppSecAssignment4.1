@@ -30,7 +30,7 @@
 
             <data android:mimeType="text/giftcards_use" />
                 <data android:scheme="giftcard" />
-                <data android:host="appsecclass.report"/>
+                <data android:host="appsec.moyix.net"/>
             </intent-filter>
         </activity>
         <activity
@@ -44,7 +44,7 @@
 
             <data android:mimeType="text/giftcards_buy" />
                 <data android:scheme="giftcard" />
-                <data android:host="appsecclass.report"/>
+                <data android:host="appsec.moyix.net"/>
             </intent-filter>
         </activity>
         <activity
@@ -58,7 +58,7 @@
 
                 <data android:mimeType="text/giftcards_browse" />
                 <data android:scheme="giftcard" />
-                <data android:host="appsecclass.report"/>
+                <data android:host="appsec.moyix.net"/>
             </intent-filter>
         </activity>
         <activity
@@ -82,7 +82,7 @@
 
                 <data android:mimeType="text/giftcards_list" />
                 <data android:scheme="giftcard" />
-                <data android:host="appsecclass.report"/>
+                <data android:host="appsec.moyix.net"/>
             </intent-filter>
         </activity>
     </application>

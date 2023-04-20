@@ -32,7 +32,7 @@ class UseCard : AppCompatActivity() {
         var image : CircleImageView = findViewById(R.id.image_view)
         val card : Card? = intent.getParcelableExtra("Card")
         findViewById<EditText>(R.id.amount).setText(card?.amount.toString())
-        Glide.with(this).asBitmap().load("http://appsecclass.report/" + card?.product?.productImageLink).into(image)
+        Glide.with(this).asBitmap().load("http://appsec.moyix.net/" + card?.product?.productImageLink).into(image)
         val loggedInUser : User? = intent.getParcelableExtra("User")
         var token : String = "Token " + loggedInUser?.token.toString()
         Log.d("Token check", token)
@@ -40,7 +40,7 @@ class UseCard : AppCompatActivity() {
         var button: Button = findViewById(R.id.submit_buy)
         button.text = "Use Card"
         button.setOnClickListener{
-            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsecclass.report").addConverterFactory(
+            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsec.moyix.net").addConverterFactory(
                 GsonConverterFactory.create())
             var retrofit: Retrofit = builder.build()
             var client: CardInterface = retrofit.create(CardInterface::class.java)

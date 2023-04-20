@@ -18,7 +18,7 @@ class CardRecyclerViewAdapter(val context: Context, private val cardList: List<C
             val image : CircleImageView = itemView.findViewById(R.id.image_view)
             val text : TextView = itemView.findViewById(R.id.name)
             if (card != null) {
-                Glide.with(context).asBitmap().load("http://appsecclass.report/" + card.product?.productImageLink).into(image)
+                Glide.with(context).asBitmap().load("http://appsec.moyix.net/" + card.product?.productImageLink).into(image)
             }
             if (card != null) {
                 text.text = card.amount.toString()
