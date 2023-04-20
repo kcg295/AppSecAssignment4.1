@@ -45,7 +45,7 @@ class SecondFragment : Fragment() {
             var password : String = view.findViewById<EditText>(R.id.registerPassword).text.toString()
             var password2 : String = view.findViewById<EditText>(R.id.registerConfirmPassword).text.toString()
 
-            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsecclass.report").addConverterFactory(GsonConverterFactory.create())
+            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsec.moyix.net").addConverterFactory(GsonConverterFactory.create())
             var retrofit: Retrofit = builder.build()
             var client: UserInterface = retrofit.create(UserInterface::class.java)
             var loggedInUser: User? = null;
@@ -68,7 +68,7 @@ class SecondFragment : Fragment() {
                         Log.d("Register Success", "Token:" + loggedInUser?.token.toString())
                         var intent = Intent(Intent.ACTION_VIEW)
                         intent.type = "text/giftcards_browse"
-                        intent.data = Uri.parse("https://appsecclass.report/api/index")
+                        intent.data = Uri.parse("https://appsec.moyix.net/api/index")
                         intent.putExtra("User", loggedInUser);
                         startActivity(intent)
                     }

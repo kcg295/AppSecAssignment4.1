@@ -31,20 +31,38 @@ a Virtual Machine running Linux.** Android studio works for Windows, Linux, Mac,
 and Chrome OS, so most of your platforms should be covered. If you have a
 different platform than listed above, please reach out to your instructor or TA.
 
-After installing Android studio, you should set up the Android Emulator. To do
-this open Android Studio and go to:
+We have prepared a visual walkthrough of the setup process on Mac (it should be
+very similar on Linux and Windows), which you can look through [here](https://imgur.com/a/noDTMNj).
+
+After installing Android Studio, you should import the project. You can do this
+from the "Welcome to Android Studio" window by clicking "More Actions" ->
+"Import Project (Gradle, Eclipse ADT, etc.)". This will open up a file chooser
+window. Navigate to the homework repository, and choose the `GiftcardSite`
+folder inside `AppSecAssignment4.1`. **Important: don't try to import a different
+folder, like the top-level repository or the `src` folder; it needs
+to be the `GiftcardSite` so that Android Studio will recognize the project
+correctly.**
+
+The project should now load in the IDE. You may see a dialog window that asks if
+you want to "Trust Gradle Project?" - if so, answer yes. Now give the IDE a
+minute or two to go download the project dependencies and set up the build
+system. When it finishes, you should see the file pane on the left side of the
+IDE populate with entries like "app", "manifests", and "Gradle Scripts".
+
+Next, you should set up the Android Emulator. To do this go to:
 
 ```
 Tools->AVD Manager
 ```
-This will open a new window. In this window you should see a button that says:
+
+This will open a new panel. In this panel you should see a button that says:
 
 ```
-+ Create Virtual Device...
+Create virtual device
 ```
 
 Click this button. Another window will open asking you to choose a device. We
-tested this application on an emulated Pixel 3a, so we suggest selecting that
+tested this application on an emulated `Pixel 3a`, so we suggest selecting that
 model, then clicking next. It will then ask you to select a system image. We
 recommend downloading the image labeled R, which has an API Level of 30, the
 x86 ABI, and a Target of Android 11.0 (Google Play). You may need to download
@@ -60,19 +78,15 @@ Frame is checked. Then click on the button labeled Finish.
 Note that the first time you run the Android Emulator it will take some time.
 The emulator will set up the device for you, so let it do its work.
 
-After you have created an emulated Android device, it is time to import the
-project. Select the following:
+After you have created an emulated Android device, you can now build the project
+and launch it in the emulator by pressing the green play button in the Android
+Studio toolbar. The first time you launch the emulator it may take a while to
+start up, but it should eventually appear and then start the app.
 
-```
-File->New->Import Project
-```
+While the app is running, you may want to click on the "Run" and "Logcat" tabs
+on the bottom of the IDE to see debug messages printed out by the app from
+`Log.d()`.
 
-This will spawn a window that allows you to navigate your file system. Navigate
-to this folder, then select "GiftCardSite" which should appear with the default
-Android symbol next to it. This is the project you will be working on. After you
-import it you should be able to explore the code, run the emulator by pressing
-the green play button in the top right hand side of Android Studio, and then
-proceed to the next step.
 
 ## Part 2: It's all about intent
 
@@ -86,16 +100,16 @@ Intents, when not handled correctly, can cause problems. Take a look at the code
 on lines 69 to 73 of SecondFragment.kt and lines 68 to 70 of ThirdFragment.kt.
 These are two different ways of handling intents. For this portion of the
 assignment, you should create a text file, called difference.txt, which answers
-the following questions in 3 sentences or less.
+the following questions in 3 sentences or fewer.
 
 1. What are the two types of Intents?
-2. Which of the two types of Intents are more secure?
+2. Which of the two types of Intents is (generally) more secure?
 3. What type of Intent is shown on lines 69 to 73 of SecondFragment.kt?
 4. What type of Intent is shown on lines 68 to 70 of ThirdFragment.kt?
 5. Which of these two Intents is the proper way to do an Intent?
 
 As the last question above hinted, one of these two Intents is not correct.
-Fix the incorrect Intent, then in 3 sentences or less discuss in difference.txt
+Fix the incorrect Intent, then in 3 sentences or fewer discuss in difference.txt
 which file you modified and why.
 
 ### Part 2.2: Shutting out the world
@@ -128,25 +142,38 @@ will require changes to the following files:
 6. GetCard.kt
 7. CardRecyclerViewAdapter.kt
 8. RecyclerViewAdapter.kt
+9. Reporter.kt
+10. strings.xml
 
 These changes should not be large. If you find yourself including new libraries,
 or writing more lines of code instead of just modifying code that already exits
-you are likely overthinking the problem.
+you are likely overthinking the problem. This one really is simple!
 
 ## Part 4: Oops, was that card yours?
 
-There exists a vulnerability in the REST API that allows users to use GiftCards that
+There exists a vulnerability in the REST API that allows users to GiftCards that
 do not belong to them. In a file called BUG.txt, explain why this vulnerability
 may be occurring, and how it can be fixed. Your explanation should be no larger
 than a paragraph.
 
-You can start looking for this vulnerability in the following files:
+To get an idea of how the app uses the REST API to invoke the use card
+functionality, you can look at the following files:
 
 1. UseCard.kt
 2. CardInterface.kt
 
-Think about how the application is telling the server which card to use, and how
-that may be problematic.
+Think about how the application is telling the server which card to use, and how that may be problematic.
+
+Hints:
+
+* Think about how the application is telling the server which card to use, and how
+  that may be problematic.
+* You may want to try using `curl` or the Python `requests`
+  library to interact with the API directly.
+
+**Note**: You do *not* need to actually fix the vulnerability. In fact, once
+you understand the vulnerability in detail, you should be able to see why it
+cannot be fixed just by changing the client-side code.
 
 ## Part 5: Privacy is Important
 
@@ -160,15 +187,12 @@ by removing all metric collecting code, all areas that needlessly interact with
 sensors, and all permissions that are not needed for the basic functionality of
 the application (buying, browsing, and using gift cards).
 
-You should remove all necessary code in the following files:
+You should remove all necessary code in (at least) the following files:
 
 1. AndroidManifest.xml
 2. UserInfo.kt
 3. CardScrollingActivity.kt
 4. ProductScrollingActivity.kt
-
-You may need to remove lines from other files, or the entirety of other files in
-order to fully remove the invasive code.
 
 ## Grading
 
@@ -178,11 +202,11 @@ Part 2 is worth 30 points:
 
 * 10 points for answering the questions.
 * 10 points for fixing the correct intent.
-* 10 points for closing the application to outside intents.
+* 10 points for closing the application to outside intents
 
 Part 3 is worth 20 points:
 
-* 2.5 points for each file correctly modified to use HTTPS.
+* 2 points for each file correctly modified to use HTTPS.
 
 Part 4 is worth 20 points:
 
@@ -197,16 +221,11 @@ Part 5 is worth 30 points:
 
 ## What to Submit
 
-On NYU Classes, submit a link to your GitHub repository. The repository
-should be **private**, and you should add the instructor/TA's GitHub
-account as a contributor to give them access for grading.
+Submit your GitHub Repository to Gradescope. 
+There is an auto-grader that can detect the code changes, and we will manually grade the write-ups.
 
-Please see your course page to see who your grader is. Please only add your
-grader the day you turn your assignment in.
-
-The repository should contain all of the files of the Android project, plus the
+The repository should contain all the files of the Android project, plus the
 text files BUG.txt and difference.txt.
-
 
 ## Concluding Remarks
 

@@ -20,7 +20,7 @@ class RecyclerViewAdapter(val context: Context, private val productList: List<Pr
             val image : CircleImageView = itemView.findViewById(R.id.image_view)
             val text : TextView = itemView.findViewById(R.id.name)
             if (product != null) {
-                Glide.with(context).asBitmap().load("http://appsecclass.report/" + product.productImageLink).into(image)
+                Glide.with(context).asBitmap().load("http://appsec.moyix.net/" + product.productImageLink).into(image)
             }
             if (product != null) {
                 text.text = product.productName
